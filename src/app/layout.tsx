@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Open_Sans } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import ContextProvider from "@/context";
 import { headers } from "next/headers";
-const os = Open_Sans({
+import { cn } from "@/lib/utils";
+const ms = Montserrat({
   subsets: ["latin"]
 })
 export const metadata: Metadata = {
@@ -24,7 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={os.className}
+        className={cn(
+          ms.className,
+          'bg-[#00140F]'
+        )}
       >
         <ThemeProvider
           attribute="class"
@@ -33,7 +37,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ContextProvider cookies={cookies}>
-          {children}
+            {children}
 
           </ContextProvider>
         </ThemeProvider>

@@ -1,14 +1,4 @@
 'use client'
-import { BsGlobeAmericas } from 'react-icons/bs'
-import { FaDiscord } from 'react-icons/fa'
-import { RiTelegram2Fill, RiTwitterXLine } from 'react-icons/ri'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from "@/components/ui/card"
 import {
   Table,
   TableBody,
@@ -18,96 +8,103 @@ import {
   TableRow
 } from "@/components/ui/table"
 import { useAssetList } from '@/hooks/useAssetList'
-import { cn, cutString, NumberComma } from "@/lib/utils"
-import { TooltipAddress } from './tooltip-address'
+import { cn, NumberComma } from "@/lib/utils"
 import { LoaderIcon } from 'lucide-react'
+import Image from "next/image"
+import { BsGlobeAmericas } from 'react-icons/bs'
+import { FaDiscord } from 'react-icons/fa'
+import { RiTelegram2Fill, RiTwitterXLine } from 'react-icons/ri'
+import { TooltipAddress } from './tooltip-address'
 
 export default function AssetList() {
   const { data, isPending } = useAssetList({ page: 1, pageSize: 100 })
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="uppercase">Asset List</CardTitle>
-        <CardDescription>
-          <div className="flex items-center gap-2">
-            Total:
-            <div className="text-lg font-bold text-primary">{NumberComma(data?.data.total_balance_usd!)} USD</div>
+    <div className="p-4 border rounded-xl border-[#D6F8DD]/80">
+      <div className="mb-3">
+        <div className="flex items-center gap-2">
+          <div className='text-[#27CC99] text-xl md:text-2xl font-bold'>Tokens</div>
+          <div className="border border-white/80 px-2 py-1 rounded-lg text-sm">
+            Total: {data?.data.total_balance_usd ? NumberComma(data?.data.total_balance_usd) : 0} USD
           </div>
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
+        </div>
+        <p className="text-sm text-[#D6F8DD]">Asset lists</p>
+      </div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>CHAIN</TableHead>
+            <TableHead>TICKER</TableHead>
+            <TableHead>BALANCE</TableHead>
+            <TableHead>PRICE (USD)</TableHead>
+            <TableHead>SUB TOTAL</TableHead>
+            <TableHead>SOCIAL</TableHead>
+            <TableHead>AUM WALLET</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {isPending ? (
             <TableRow>
-              <TableHead>CHAIN</TableHead>
-              <TableHead>TICKER</TableHead>
-              <TableHead>BALANCE</TableHead>
-              <TableHead>PRICE (USD)</TableHead>
-              <TableHead>SUB TOTAL</TableHead>
-              <TableHead>SOCIAL</TableHead>
-              <TableHead>AUM WALLET</TableHead>
+              <TableCell className='text-center h-32' colSpan={7}>
+                <div className="flex items-center gap-1 justify-center">
+                  <LoaderIcon className='animate-spin w-4' /> Loading Asset...
+                </div>
+              </TableCell>
             </TableRow>
-          </TableHeader>
-          <TableBody>
-            {isPending ? (
-              <TableRow>
-                <TableCell className='text-center h-32' colSpan={7}>
-                  <div className="flex items-center gap-1 justify-center">
-                    <LoaderIcon className='animate-spin w-4' /> Loading Asset...
-                  </div>
-                </TableCell>
-              </TableRow>
-            ) : (
-              <>
-                {
-                  data?.data.data.map(item => (
-                    <TableRow key={item.id}>
-                      <TableCell>{item.chain.name}</TableCell>
-                      <TableCell>{item.ticker.name}</TableCell>
-                      <TableCell>{NumberComma(item.balance)}</TableCell>
-                      <TableCell>$ {item.price}</TableCell>
-                      <TableCell>$ {NumberComma(item.balance * item.price)}</TableCell>
-                      <TableCell>
-                        <div className='flex gap-2 justify-center'>
-                          <a href={item.ticker.x!} target="_blank" rel="noopener noreferrer" className={cn(
-                            "h-6 w-6 border rounded-lg flex items-center justify-center",
-                            item.ticker.x ? 'bg-primary/80 text-black' : 'bg-slate-500/20'
-                          )}>
-                            <RiTwitterXLine className='text-sm' />
-                          </a>
-                          <a href={item.ticker.telegram!} target="_blank" rel="noopener noreferrer" className={cn(
-                            "h-6 w-6 border rounded-lg flex items-center justify-center",
-                            item.ticker.telegram ? 'bg-primary/80 text-black' : 'bg-slate-500/20'
-                          )}>
-                            <RiTelegram2Fill className='text-sm' />
-                          </a>
-                          <a href={item.ticker.web!} target="_blank" rel="noopener noreferrer" className={cn(
-                            "h-6 w-6 border rounded-lg flex items-center justify-center",
-                            item.ticker.web ? 'bg-primary/80 text-black' : 'bg-slate-500/20'
-                          )}>
-                            <BsGlobeAmericas className='text-sm' />
-                          </a>
-                          <a href={item.ticker.dc!} target="_blank" rel="noopener noreferrer" className={cn(
-                            "h-6 w-6 border rounded-lg flex items-center justify-center",
-                            item.ticker.dc ? 'bg-primary/80 text-black' : 'bg-slate-500/20'
-                          )}>
-                            <FaDiscord className='text-sm' />
-                          </a>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <TooltipAddress address={item.wallet} link_ref={item.link_ref}>
-                          {item.wallet}
-                        </TooltipAddress>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                }
-              </>
-            )}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+          ) : (
+            <>
+              {
+                data?.data.data.map(item => (
+                  <TableRow className="border-dashed border-primary/10" key={item.id}>
+                    <TableCell>
+                      <div className="flex gap-2 items-center">
+                        <Image width={20} height={20} src={`/images/chains/${item.chain.name}.png`} alt={item.chain.name} />
+                        {item.chain.name}
+                      </div>
+                    </TableCell>
+                    <TableCell>{item.ticker.name}</TableCell>
+                    <TableCell>{NumberComma(item.balance)}</TableCell>
+                    <TableCell>$ {item.price}</TableCell>
+                    <TableCell>$ {NumberComma(item.balance * item.price)}</TableCell>
+                    <TableCell>
+                      <div className='flex gap-2 justify-center'>
+                        <a href={item.ticker.x ?? '#'} target="_blank" rel="noopener noreferrer" className={cn(
+                          "h-6 w-6 border rounded-lg flex items-center justify-center",
+                          item.ticker.x ? 'bg-primary/80 text-black' : 'bg-slate-500/20'
+                        )}>
+                          <RiTwitterXLine className='text-sm' />
+                        </a>
+                        <a href={item.ticker.telegram ?? '#'} target="_blank" rel="noopener noreferrer" className={cn(
+                          "h-6 w-6 border rounded-lg flex items-center justify-center",
+                          item.ticker.telegram ? 'bg-primary/80 text-black' : 'bg-slate-500/20'
+                        )}>
+                          <RiTelegram2Fill className='text-sm' />
+                        </a>
+                        <a href={item.ticker.web ?? '#'} target="_blank" rel="noopener noreferrer" className={cn(
+                          "h-6 w-6 border rounded-lg flex items-center justify-center",
+                          item.ticker.web ? 'bg-primary/80 text-black' : 'bg-slate-500/20'
+                        )}>
+                          <BsGlobeAmericas className='text-sm' />
+                        </a>
+                        <a href={item.ticker.dc ?? '#'} target="_blank" rel="noopener noreferrer" className={cn(
+                          "h-6 w-6 border rounded-lg flex items-center justify-center",
+                          item.ticker.dc ? 'bg-primary/80 text-black' : 'bg-slate-500/20'
+                        )}>
+                          <FaDiscord className='text-sm' />
+                        </a>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <TooltipAddress address={item.wallet} link_ref={item.link_ref}>
+                        {item.wallet}
+                      </TooltipAddress>
+                    </TableCell>
+                  </TableRow>
+                ))
+              }
+            </>
+          )}
+        </TableBody>
+      </Table>
+    </div>
   )
 }
