@@ -20,7 +20,7 @@ export default function DropdownNavbar() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size={"icon"} className="rounded-full">
+        <Button size={"icon"}>
           <MoreHorizontal />
         </Button>
       </DropdownMenuTrigger>
@@ -32,7 +32,7 @@ export default function DropdownNavbar() {
                 <div className="flex flex-1 items-center text-sm text-destructive gap-2">
                   Disconnected
                 </div>
-                <button className="rounded-full text-destructive">
+                <button className="text-destructive">
                   <Power className="w-4" />
                 </button>
               </div>
@@ -42,7 +42,7 @@ export default function DropdownNavbar() {
                   <UserCircle className="w-4" />
                   <p>{address ? cutString(address, 5) : 'Profile'}</p>
                 </div>
-                <button onClick={disconnect} className="rounded-full">
+                <button onClick={disconnect}>
                   <Power className="w-4" />
                 </button>
               </div>

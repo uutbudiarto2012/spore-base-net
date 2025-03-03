@@ -3,10 +3,13 @@ import { useAppKitWallet } from '@reown/appkit-wallet-button/react'
 import { Button } from "@/components/ui/button"
 import { useAppKit, useAppKitAccount } from "@reown/appkit/react"
 import { Wallet } from 'lucide-react'
-
-export default function ConnectButton() {
+import { cutString } from '@/lib/utils'
+type TConnectButton = {
+  label?: string
+}
+export default function ConnectButton(props: TConnectButton) {
   const { isReady } = useAppKitWallet()
-  const { isConnected } = useAppKitAccount()
+  const { isConnected, address } = useAppKitAccount()
   const { open } = useAppKit()
   return (
     <div>
@@ -14,20 +17,20 @@ export default function ConnectButton() {
         isReady ? (
           <>
             {
-              isConnected ? (
-                <div className='border dark:bg-primary p-0 bg-primary-foreground rounded-full'>
-                  <w3m-button size='md' balance='hide' />
-                </div>
+              isConnected && address ? (
+                <Button variant={'primary'} onClick={() => open()}>
+                  {cutString(address, 5)}
+                </Button>
               ) : (
-                <Button className='rounded-full' onClick={() => open()}>
-                    <Wallet />
-                    Connect
+                <Button variant={"primary"} onClick={() => open()}>
+                  <Wallet />
+                  {props.label || "Connect"}
                 </Button>
               )
             }
           </>
         ) : (
-          <Button className='rounded-full' disabled>
+          <Button variant={"primary"} disabled>
             <Wallet />
             Loading...
           </Button>

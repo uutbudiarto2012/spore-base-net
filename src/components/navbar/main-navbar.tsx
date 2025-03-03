@@ -1,9 +1,9 @@
+import { Droplets, FileUser, Home } from 'lucide-react'
 import Link from 'next/link'
 import ConnectButton from '../connect-button'
+import ConnectButtonSmall from '../connect-button-small'
 import MainLogo from '../main-logo'
 import DropdownNavbar from './dropdown-navbar'
-import { Droplets, FileUser, Home, Smile } from 'lucide-react'
-import ConnectButtonSmall from '../connect-button-small'
 
 export default function MainNavbar() {
   return (

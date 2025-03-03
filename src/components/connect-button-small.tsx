@@ -3,10 +3,11 @@ import { useAppKitWallet } from '@reown/appkit-wallet-button/react'
 import { Button } from "@/components/ui/button"
 import { useAppKit, useAppKitAccount } from "@reown/appkit/react"
 import { Wallet } from 'lucide-react'
+import { cutString } from '@/lib/utils'
 
 export default function ConnectButtonSmall() {
   const { isReady } = useAppKitWallet()
-  const { isConnected } = useAppKitAccount()
+  const { isConnected, address } = useAppKitAccount()
   const { open } = useAppKit()
   return (
     <div>
@@ -14,19 +15,19 @@ export default function ConnectButtonSmall() {
         isReady ? (
           <>
             {
-              isConnected ? (
-                <div className='border dark:bg-primary h-10 flex items-center bg-primary-foreground rounded-full'>
-                  <w3m-button  balance='show' />
-                </div>
+              isConnected && address ? (
+                <Button size={"sm"} variant={'primary'} onClick={() => open()}>
+                  {cutString(address, 5)}
+                </Button>
               ) : (
-                <Button size={'icon'} className='rounded-full' onClick={() => open()}>
+                <Button size={'icon'} onClick={() => open()}>
                   <Wallet />
                 </Button>
               )
             }
           </>
         ) : (
-          <Button className='rounded-full' size={'icon'} disabled>
+          <Button size={'icon'} disabled>
             <Wallet />
           </Button>
         )

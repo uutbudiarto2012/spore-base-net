@@ -4,8 +4,8 @@ import React from 'react'
 
 export default function MainLogo() {
   return (
-    <Link href={'/'} className='w-24 sm:w-28 md:w-32 h-20 relative flex'>
-      <Image className='w-full h-full object-contain' src={'/logo/logo-footer.png'} fill alt='spore vc logo' />
+    <Link href={'/'} className='w-[121px] h-[45px] md:w-[151px] md:h-[60px] relative flex'>
+      <Image className='w-full h-full object-contain' src={'/logo/logo-green.png'} fill alt='spore vc logo' />
     </Link>
   )
 }
