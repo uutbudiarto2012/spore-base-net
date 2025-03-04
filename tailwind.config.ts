@@ -13,7 +13,7 @@ const config: Config = {
 			padding: '0.5em',
 			screens: {
 				lg: '1120px',
-				xl: '1350px',
+				xl: '1260px',
 				'2xl': '1496px',
 			},
 		},

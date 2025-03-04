@@ -5,7 +5,7 @@ const nextConfig = {
     X_API_KEY: process.env.X_API_KEY,
     PROJECT_ID: process.env.PROJECT_ID,
   },
-  reactStrictMode:false
+  // reactStrictMode:false
 };
 
 export default nextConfig;

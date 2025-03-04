@@ -5,6 +5,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 import ContextProvider from "@/context";
 import { headers } from "next/headers";
 import { cn } from "@/lib/utils";
+import NextTopLoader from 'nextjs-toploader';
+import { Toaster } from "@/components/ui/sonner";
+
 const ms = Montserrat({
   subsets: ["latin"]
 })
@@ -30,6 +33,7 @@ export default function RootLayout({
           'bg-[#00140F]'
         )}
       >
+        <NextTopLoader initialPosition={0.2} color="#27CC99" height={3} />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -38,8 +42,8 @@ export default function RootLayout({
         >
           <ContextProvider cookies={cookies}>
             {children}
-
           </ContextProvider>
+          <Toaster richColors closeButton />
         </ThemeProvider>
       </body>
     </html>

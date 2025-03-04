@@ -1,12 +1,15 @@
+"use client"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { cutString } from "@/lib/utils"
-import { Copy } from "lucide-react"
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+} from "@/components/ui/tooltip";
+import { cutString } from "@/lib/utils";
+import { Copy } from "lucide-react";
+import copy from 'copy-to-clipboard';
+import { toast } from "sonner";
+
 export function TooltipAddress({
   address,
   children,
@@ -16,6 +19,17 @@ export function TooltipAddress({
   link_ref: string,
   children: React.ReactNode
 }) {
+
+  function handleCopy() {
+    copy(address, {
+      message: "Coppyyyy",
+      onCopy() {
+        toast.success('Address Copied', {
+          description: `${address}`
+        })
+      },
+    })
+  }
   return (
     <TooltipProvider>
       <Tooltip>
@@ -27,11 +41,9 @@ export function TooltipAddress({
             <a className="text-xs font-light" href={link_ref} target="_blank" rel="noopener noreferrer">
               {children}
             </a>
-            <CopyToClipboard text={address}>
-              <button className="text-sm">
-                <Copy className="w-4" />
-              </button>
-            </CopyToClipboard>
+            <button onClick={() => handleCopy()} className="text-sm">
+              <Copy className="w-4" />
+            </button>
           </div>
         </TooltipContent>
       </Tooltip>

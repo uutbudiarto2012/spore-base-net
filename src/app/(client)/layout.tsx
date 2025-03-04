@@ -1,3 +1,4 @@
+import MainFooter from "@/components/footer/main-footer";
 import MainNavbar from "@/components/navbar/main-navbar";
 import MobileMenu from "@/components/navbar/mobile-menu";
 export default function ClientLayout({
@@ -9,6 +10,7 @@ export default function ClientLayout({
     <>
       <MainNavbar />
       <main className="pb-16 lg:pb-0">{children}</main>
+      <MainFooter />
       <MobileMenu />
     </>
   );
