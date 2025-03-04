@@ -1,0 +1,18 @@
+import { Button } from "@/components/ui/button"
+
+const JoinComunity = () => {
+  return (
+    <div className="p-3">
+      <div className="container aspect-auto lg:aspect-[237/50] bg-[url(/images/bg-join-telegram.png)] bg-cover flex items-center rounded-2xl overflow-hidden justify-center">
+        <div className="max-w-3xl p-4 lg:p-0 mx-auto flex flex-col justify-center items-center gap-4">
+          <h2 className="text-xl md:text-[32px] leading-normal text-center font-bold text-black">
+            Be the first to know about updates and exclusive opportunities. Join our community!
+          </h2>
+          <Button size={"lg"} variant={"primary-light"} className="font-bold">Join Telegram</Button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default JoinComunity
