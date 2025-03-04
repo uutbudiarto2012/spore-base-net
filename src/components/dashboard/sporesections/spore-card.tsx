@@ -5,7 +5,7 @@ import { FaUserFriends } from "react-icons/fa";
 type SporeCardProps = {
   icon: React.ReactNode
   label: string
-  value: number | string
+  value?: number | string
 }
 function SporeCard(props: SporeCardProps) {
   return (
@@ -15,7 +15,13 @@ function SporeCard(props: SporeCardProps) {
       </div>
       <div className="flex-1">
         <p className="text-[#D6F8DD] leading-normal text-[14px]">{props.label}</p>
-        <div className="text-[20px] font-bold text-[#27CC99]">{props.value}</div>
+        {
+          props.value ? (
+            <div className="text-[20px] font-semibold text-[#27CC99]">{props.value}</div>
+          ) : (
+            <div className="w-12 h-6 mt-1 rounded-md bg-[#D6F8DD]/50 animate-pulse"></div>
+          )
+        }
       </div>
     </div>
   )
