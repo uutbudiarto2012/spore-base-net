@@ -17,7 +17,7 @@ import { RiTelegram2Fill, RiTwitterXLine } from 'react-icons/ri'
 import { TooltipAddress } from './tooltip-address'
 
 export default function AssetList() {
-  const { data, isPending } = useAssetList({ page: 1, pageSize: 10 })
+  const { data, isPending } = useAssetList({ page: 1, pageSize: 200 })
   return (
     <div className="container">
       <div className="mb-3">

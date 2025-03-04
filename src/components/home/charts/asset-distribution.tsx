@@ -1,11 +1,13 @@
 'use client'
+import { useDistributionReward } from '@/hooks/useSporeStats';
 import { ApexOptions } from 'apexcharts';
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactApexChart from 'react-apexcharts';
 
 export default function AssetDistribution() {
-  const [state] = React.useState<{ options: ApexOptions, series: number[] }>({
-    series: [44, 55, 13, 43, 22],
+  const { data } = useDistributionReward()
+  const [chartData, setChartData] = useState<{ options: ApexOptions, series: number[] }>({
+    series: [],
     options: {
       chart: {
         width: "100%",
@@ -35,12 +37,24 @@ export default function AssetDistribution() {
         fontWeight: "600",
         floating: false
       },
-      labels: ['Chain A', 'Chain B', 'Chain C', 'Chain D', 'Chain E'],
+      labels: []
     },
   });
+  useEffect(() => {
+    if (data) {
+      setChartData(prev => ({
+        ...prev,
+        series: data.balanceUsds || [],
+        options: {
+          ...prev.options,
+          labels: data.labels || []
+        }
+      }));
+    }
+  }, [data]);
   return (
     <div id="chart-donut" className='h-full'>
-      <ReactApexChart options={state.options} series={state.series} type="donut" height={'100%'} width={"100%"} />
+      <ReactApexChart options={chartData.options} series={chartData.series} type="donut" height={'100%'} width={"100%"} />
       <div id="html-dist"></div>
     </div>
   )
