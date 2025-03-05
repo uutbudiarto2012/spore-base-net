@@ -45,3 +45,9 @@ export const cutString = (data: string, count: number) => {
   const L = data.slice(-count);
   return F ? `${F}...${L}` : "-";
 }
+
+export function bigNumberToInt(bigNumber: string) {
+  const bn = new BigNumber(bigNumber)
+  const stringNumber = bn.toString()
+  return +stringNumber
+}
