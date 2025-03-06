@@ -151,7 +151,7 @@ async function doClaimReward(queryClient: ReturnType<typeof useQueryClient>, dat
     await createHistoryClaim(formData)
     await tx.wait();
     queryClient.invalidateQueries({ queryKey: ["get-contract-claim"] });
-    getClaimHistory({ address: data.address_wallet })
+    getClaimHistory({address:data.address_wallet})
     return tx
   } catch (error: any) {
     toast.error(error.code, {
