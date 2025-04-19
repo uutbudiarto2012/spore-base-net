@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-import { BsDiscord, BsGithub, BsTelegram, BsTwitterX } from 'react-icons/bs'
+import { BsTelegram, BsTwitterX } from 'react-icons/bs'
 
 function MainFooter() {
   return (
@@ -13,16 +12,10 @@ function MainFooter() {
               <Image className='w-full h-full object-contain' src={'/logo/logo-dark.png'} fill alt='spore vc logo' />
             </Link>
             <div className="flex items-center gap-2">
-              <Link className='flex h-8 w-8 border items-center justify-center rounded-lg' href="http://google.com" target="_blank" rel="noopener noreferrer">
+              <Link className='flex h-8 w-8 border items-center justify-center rounded-lg' href="https://x.com/sporevc" target="_blank" rel="noopener noreferrer">
                 <BsTwitterX />
               </Link>
-              <Link className='flex h-8 w-8 border items-center justify-center rounded-lg' href="http://google.com" target="_blank" rel="noopener noreferrer">
-                <BsDiscord />
-              </Link>
-              <Link className='flex h-8 w-8 border items-center justify-center rounded-lg' href="http://google.com" target="_blank" rel="noopener noreferrer">
-                <BsGithub />
-              </Link>
-              <Link className='flex h-8 w-8 border items-center justify-center rounded-lg' href="http://google.com" target="_blank" rel="noopener noreferrer">
+              <Link className='flex h-8 w-8 border items-center justify-center rounded-lg' href="https://t.me/sporevc" target="_blank" rel="noopener noreferrer">
                 <BsTelegram />
               </Link>
             </div>
@@ -49,7 +42,7 @@ function MainFooter() {
             <div>
               <h2 className='text-[22px] text-[#00140F] font-bold mb-3'>Documentation</h2>
               <div className='mt-3 space-y-4'>
-                <Link className='flex' href={'/'}>Docs</Link>
+                <Link className='flex' target="_blank" rel="noopener noreferrer" href={'https://sporevc.gitbook.io/spore-vc'}>Docs</Link>
                 <Link className='flex' href={'/dashboard'}>Dashboard</Link>
               </div>
             </div>

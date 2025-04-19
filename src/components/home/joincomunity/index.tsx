@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const JoinComunity = () => {
   return (
@@ -8,7 +9,9 @@ const JoinComunity = () => {
           <h2 className="text-xl md:text-[32px] leading-normal text-center font-bold text-black">
             Be the first to know about updates and exclusive opportunities. Join our community!
           </h2>
-          <Button size={"lg"} variant={"primary-light"} className="font-bold">Join Telegram</Button>
+          <Button size={"lg"} variant={"primary-light"} className="font-bold" asChild>
+            <Link href="https://t.me/sporevc" target="_blank" rel="noopener noreferrer">Join Telegram</Link>
+          </Button>
         </div>
       </div>
     </div>

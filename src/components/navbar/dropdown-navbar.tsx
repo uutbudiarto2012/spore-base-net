@@ -57,11 +57,13 @@ export default function DropdownNavbar() {
             <UserCheck2 className="w-4" />
           </DropdownMenuShortcut>
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          Docs
-          <DropdownMenuShortcut>
-            <File className="w-4" />
-          </DropdownMenuShortcut>
+        <DropdownMenuItem asChild>
+          <a href="https://sporevc.gitbook.io/spore-vc" target="_blank" rel="noopener noreferrer">
+            Docs
+            <DropdownMenuShortcut>
+              <File className="w-4" />
+            </DropdownMenuShortcut>
+          </a>
         </DropdownMenuItem>
         <DropdownMenuSeparator className="flex md:hidden" />
         <DropdownMenuItem asChild>

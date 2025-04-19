@@ -30,14 +30,6 @@ export default function StatsSection() {
             <AssetDistribution />
           </div>
           <div className="md:col-span-3 p-4 border rounded-xl border-[#D6F8DD]/80">
-            <div className='flex mb-3'>
-              <div className='flex gap-2'>
-                <div className='text-[#27CC99] uppercase text-lg font-semibold text-center'>Matrix Monthly</div>
-                <div className='border bg-[#D6F8DD] rounded-lg'>
-                  <input className='p-1 bg-transparent text-black' type="month" />
-                </div>
-              </div>
-            </div>
             <Portfolio />
           </div>
         </div>

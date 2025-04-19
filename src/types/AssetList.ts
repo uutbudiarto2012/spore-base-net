@@ -44,3 +44,26 @@ export type TResponseAssetList = {
     total_balance_usd: number
   }
 }
+
+type TClientBalanceWallet = {
+  ticker: TTicker
+  chain: TChain
+  wallets: string[],
+  balance: number
+  price: number
+  subTotal: number
+  createdAt: string
+  link_ref: string
+}
+export type TResponseClientBalanceWallet = {
+  data: TClientBalanceWallet[]
+  total: number
+}
+
+export type TAumHistory = {
+  id: number
+  date: string
+  aum: number
+  rewardDistribution: number | null,
+  createdAt: string
+}

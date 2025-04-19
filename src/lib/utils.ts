@@ -51,3 +51,7 @@ export function bigNumberToInt(bigNumber: string) {
   const stringNumber = bn.toString()
   return +stringNumber
 }
+export function toLinkRef(link: string, address: string) {
+  const replacedUrl = link.replace('<wallet>', address);
+  return replacedUrl;
+}
