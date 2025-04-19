@@ -1,4 +1,5 @@
 import { axiosClient } from '@/lib/axiosclient'
+import { TAumHistory } from '@/types/AssetList'
 import { TDistributionReward, THolderCharts } from '@/types/DistributionReward'
 import { useQuery } from '@tanstack/react-query'
 
@@ -20,6 +21,15 @@ const getAumProgress = async (): Promise<number> => {
   })
   return response.data?.data?.latest_aum || 0
 }
+const getHistoryAum = async (startDate?: string, endDate?: string): Promise<TAumHistory[]> => {
+  const response = await axiosClient({
+    method: 'GET',
+    url: `client/history-aum`,
+    params: { start_date: startDate, end_date: endDate }
+  })
+  return response.data?.data
+}
+
 
 const useDistributionReward = () => {
   return useQuery({
@@ -34,8 +44,15 @@ const useAumProgress = () => {
     queryFn: () => getAumProgress(),
   })
 }
+const useHistoryAum = (startDate?: string, endDate?: string) => {
+  return useQuery({
+    queryKey: ['client_history-aum', startDate, endDate],
+    queryFn: () => getHistoryAum(startDate, endDate),
+    enabled: !!startDate && !!endDate, // only run if both are present
+  })
+}
 
 export {
-  useDistributionReward,
-  useAumProgress
+  getHistoryAum, useAumProgress, useDistributionReward, useHistoryAum
 }
+
