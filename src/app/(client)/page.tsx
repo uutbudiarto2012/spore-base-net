@@ -5,7 +5,11 @@ import StatsSection from '@/components/home/charts/stats-section'
 // import RewardHistory from '@/components/home/reward-history'
 import HeroSection from '@/components/home/hero/hero-section'
 import JoinComunity from '@/components/home/joincomunity'
+import { metadata } from '../layout'
 
+export async function generateMetadata() {
+  return metadata
+}
 export default function HomePage() {
   return (
     <div>
