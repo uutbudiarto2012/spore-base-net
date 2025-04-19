@@ -5,10 +5,31 @@ import StatsSection from '@/components/home/charts/stats-section'
 // import RewardHistory from '@/components/home/reward-history'
 import HeroSection from '@/components/home/hero/hero-section'
 import JoinComunity from '@/components/home/joincomunity'
-import { metadata } from '../layout'
 
 export async function generateMetadata() {
-  return metadata
+  return {
+    title: "SporeVC - DEGENS In Control",
+    description: "100% of The Trading Fees Go back to The Trenches Other launchpads extract millions.Flaunch sends it all back",
+    authors: [{ name: 'Spore Team', url: `${process.env.CLIENT_URL}` }],
+    openGraph: {
+      type: 'article',
+      url: `${process.env.CLIENT_URL}`,
+      images: [
+        {
+          url: `${process.env.CLIENT_URL}/logo/logo.png`,
+          width: 512,
+          height: 512,
+          alt: 'uut budiarto',
+        },
+      ],
+
+      title: 'SporeVC - DEGENS In Control',
+      description:
+        '100% of The Trading Fees Go back to The Trenches Other launchpads extract millions.Flaunch sends it all back',
+      siteName: 'SporeVC',
+      locale: 'en_US',
+    },
+  };
 }
 export default function HomePage() {
   return (
