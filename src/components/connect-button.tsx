@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button"
 import { useAppKit, useAppKitAccount } from "@reown/appkit/react"
 import { Wallet } from 'lucide-react'
 import { cutString } from '@/lib/utils'
+// import { useSwitchChain } from 'wagmi'
 type TConnectButton = {
   label?: string
 }
 export default function ConnectButton(props: TConnectButton) {
+  // const { } = useSwitchChain()
   const { isReady } = useAppKitWallet()
   const { isConnected, address } = useAppKitAccount()
   const { open } = useAppKit()
