@@ -3,6 +3,7 @@ import { Droplets, Home, LayoutGrid } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { FaBookOpen } from 'react-icons/fa6'
 import ConnectButton from '../connect-button'
 import ConnectButtonSmall from '../connect-button-small'
 import MainLogo from '../main-logo'
@@ -36,7 +37,11 @@ export default function MainNavbar() {
                 <LayoutGrid className='w-5' /> Dashboard
               </div>
             </Link>
-
+            <Link href={'https://sporevc.gitbook.io/spore-vc'} target="_blank" rel="noopener noreferrer" className='text-sm cursor-pointer flex gap-1 items-center relative w-40 font-semibold text-[#D6F8DD] justify-center'>
+              <div className='flex items-center gap-1'>
+                <FaBookOpen className='w-5' /> Document
+              </div>
+            </Link>
           </div>
         </div>
         <div className='w-1/2 lg:w-1/4 shrink-0 flex justify-end gap-12 items-center'>

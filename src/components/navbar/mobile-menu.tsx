@@ -29,7 +29,7 @@ export default function MobileMenu() {
           segmen1 === 'dashboard' ? 'text-[#27CC99]' : 'text-[#D6F8DD]'
         )}>
           <FileUser className='w-5' />
-          <p className='text-[10px] font-medium mt-1'>Profile</p>
+          <p className='text-[10px] font-medium mt-1'>Dashboard</p>
         </Link>
       </div>
     </div>
