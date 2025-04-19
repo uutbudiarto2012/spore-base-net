@@ -82,7 +82,7 @@ export default function Portfolio() {
       <div id="chart-portfolio" className='w-full h-full'>
         {!isLoading && data && (
           <>
-            <ReactApexChart options={chartOptions} series={series} type="area" height={"420"} />
+            <ReactApexChart options={chartOptions} series={series} type="area" height={"360"} />
             <div id="html-dist-portfolio"></div>
           </>
         )}
