@@ -32,7 +32,7 @@ function MainFooter() {
             <div>
               <h2 className='text-[22px] text-[#00140F] font-bold'>Community</h2>
               <div className='mt-3'>
-                <Link href={'/'}>Telegram Group</Link>
+                <Link target="_blank" rel="noopener noreferrer" href={'https://t.me/sporevc'}>Telegram Group</Link>
               </div>
             </div>
           </div>

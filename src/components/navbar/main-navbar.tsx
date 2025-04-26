@@ -1,5 +1,5 @@
 'use client'
-import { Droplets, Home, LayoutGrid } from 'lucide-react'
+import { Home, LayoutGrid } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -25,12 +25,12 @@ export default function MainNavbar() {
               {!segmen1 && <Image className='h-full w-full object-cover py-2' fill alt='active' src={'/svg/bg-active-menu.svg'} />}
               <div className='flex items-center gap-1'><Home className='w-5' /> Home</div>
             </Link>
-            <Link href={'/airdrop'} className='text-sm cursor-pointer flex gap-1 items-center relative w-40 font-semibold text-[#D6F8DD] justify-center'>
+            {/* <Link href={'/airdrop'} className='text-sm cursor-pointer flex gap-1 items-center relative w-40 font-semibold text-[#D6F8DD] justify-center'>
               {segmen1 === 'airdrop' && <Image className='h-full w-full object-cover py-2' fill alt='active' src={'/svg/bg-active-menu.svg'} />}
               <div className='flex items-center gap-1'>
                 <Droplets className='w-5' /> Airdrop
               </div>
-            </Link>
+            </Link> */}
             <Link href={'/dashboard'} className='text-sm cursor-pointer flex gap-1 items-center relative w-40 font-semibold text-[#D6F8DD] justify-center'>
               {segmen1 ==='dashboard' && <Image className='h-full w-full object-cover py-2' fill alt='active' src={'/svg/bg-active-menu.svg'} />}
               <div className='flex items-center gap-1'>
