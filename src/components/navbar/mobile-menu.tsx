@@ -1,8 +1,9 @@
 'use client'
 import { cn } from '@/lib/utils'
-import { Droplets, FileUser, Home } from 'lucide-react'
+import { FileUser, Home } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { FaBookOpen } from 'react-icons/fa6'
 
 export default function MobileMenu() {
   const pathname = usePathname()
@@ -17,19 +18,26 @@ export default function MobileMenu() {
           <Home className='w-5' />
           <p className='text-[10px] font-medium mt-1'>Home</p>
         </Link>
-        <Link href={'/airdrop'} className={cn(
+        {/* <Link href={'/airdrop'} className={cn(
           'flex flex-col items-center justify-center',
           segmen1 === 'airdrop' ? 'text-[#27CC99]' : 'text-[#D6F8DD]'
         )}>
           <Droplets className='w-5' />
           <p className='text-[10px] font-medium mt-1'>Airdrop</p>
-        </Link>
+        </Link> */}
         <Link href={'/dashboard'} className={cn(
           'flex flex-col items-center justify-center',
           segmen1 === 'dashboard' ? 'text-[#27CC99]' : 'text-[#D6F8DD]'
         )}>
           <FileUser className='w-5' />
           <p className='text-[10px] font-medium mt-1'>Dashboard</p>
+        </Link>
+        <Link href={'https://sporevc.gitbook.io/spore-vc'} target="_blank" rel="noopener noreferrer" className={cn(
+          'flex flex-col items-center justify-center',
+          segmen1 === 'document' ? 'text-[#27CC99]' : 'text-[#D6F8DD]'
+        )}>
+          <FaBookOpen className='w-5' />
+          <p className='text-[10px] font-medium mt-1'>Document</p>
         </Link>
       </div>
     </div>
