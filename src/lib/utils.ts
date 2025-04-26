@@ -40,6 +40,10 @@ export function createScanUrlGNosis({ type, hash }: { type: string, hash: string
   return `https://gnosisscan.io/${type}/${hash}`
 }
 
+export function createScanUrl({url, type, hash }: {url:string, type: string, hash: string }) {
+  return `${url}/${type}/${hash}`
+}
+
 export const cutString = (data: string, count: number) => {
   const F = data.slice(0, count || 3);
   const L = data.slice(-count);
