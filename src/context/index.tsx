@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 import { wagmiAdapter, projectId } from '@/config'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createAppKit } from '@reown/appkit/react'
-import { mainnet, gnosis } from '@reown/appkit/networks'
+import { base,baseSepolia } from '@reown/appkit/networks'
 import React, { useEffect, type ReactNode } from 'react'
 import { cookieToInitialState, WagmiProvider, type Config } from 'wagmi'
 
@@ -26,8 +26,8 @@ const metadata = {
 createAppKit({
   adapters: [wagmiAdapter],
   projectId,
-  networks: [mainnet,gnosis],
-  defaultNetwork: mainnet,
+  networks: [base, baseSepolia],
+  defaultNetwork: base,
   metadata: metadata,
   features: {
     analytics: true

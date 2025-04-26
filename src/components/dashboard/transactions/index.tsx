@@ -1,5 +1,4 @@
 'use client'
-import dayjs from 'dayjs'
 import { Button } from "@/components/ui/button"
 import {
   Table,
@@ -10,11 +9,12 @@ import {
   TableRow
 } from "@/components/ui/table"
 import { useSporeToken } from "@/hooks/useSporeToken"
-import { createScanUrlGNosis, NumberComma } from "@/lib/utils"
+import { createScanUrl, NumberComma } from "@/lib/utils"
 import { useAppKitAccount } from "@reown/appkit/react"
+import dayjs from 'dayjs'
 import { LoaderIcon } from "lucide-react"
-import Link from "next/link"
 import Image from 'next/image'
+import Link from "next/link"
 
 export default function Transactions() {
   const { address } = useAppKitAccount()
@@ -62,11 +62,12 @@ export default function Transactions() {
                       <TableCell>{NumberComma(+item.totalClaim)}</TableCell>
                       <TableCell>
                         <Button size={'sm'} variant={"primary-outline"} asChild>
-                          <Link target="_blank" rel="noopener noreferrer" href={createScanUrlGNosis({
+                          <Link target="_blank" rel="noopener noreferrer" href={createScanUrl({
+                            url:'https://basescan.org',
                             type: "tx",
                             hash: item.txn
                           })}>
-                            <Image className='grayscale' width={15} height={15} src={'/images/chains/gnosis-white.png'} alt='scaner' /> Scan
+                            <Image className='grayscale' width={15} height={15} src={'/images/chains/base.png'} alt='scaner' /> Scan
                           </Link>
                         </Button>
                       </TableCell>
